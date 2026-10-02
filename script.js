@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealTargets = [
         '.section__header',
         '.about__grid',
-        '.services__addon',
         '.trust-section__container',
         '.presence__grid',
         '.contact__headline',
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
         '.why__grid',
         '.achievements__grid',
         '.values__grid',
-        '.leadership__grid',
     ];
 
     revealTargets.forEach(sel => {
