@@ -1,0 +1,13 @@
+// Cloudflare Worker (static assets) that serves shribalajigrp.com.
+// Workers Builds deploys this on every push to main.
+{
+  "name": "royal-water-91e1",
+  "compatibility_date": "2026-06-30",
+  "assets": { "directory": "." },
+  "workers_dev": true,
+  "preview_urls": true,
+  "routes": [
+    { "pattern": "shribalajigrp.com", "custom_domain": true },
+    { "pattern": "www.shribalajigrp.com", "custom_domain": true }
+  ]
+}
