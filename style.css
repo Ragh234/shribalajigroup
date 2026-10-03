@@ -812,6 +812,20 @@ p { text-wrap: pretty; }
     margin-bottom: var(--space-xs);
 }
 
+/* Label that links to the company's own website */
+.service-card__division-label a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: inherit;
+    text-underline-offset: 3px;
+}
+
+.service-card__division-label a:hover {
+    color: var(--red-500);
+    text-decoration: underline;
+}
+
 .service-card__title {
     font-size: clamp(1.25rem, 2vw, 1.5rem);
     margin-bottom: var(--space-xs);
