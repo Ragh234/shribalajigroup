@@ -806,6 +806,7 @@ p { text-wrap: pretty; }
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.2em;
+    line-height: 1.5;
     text-transform: uppercase;
     color: var(--primary);
     margin-bottom: var(--space-xs);
