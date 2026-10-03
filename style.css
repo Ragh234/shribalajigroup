@@ -741,20 +741,19 @@ p { text-wrap: pretty; }
 
 /* ═════════════════════════════════════════════════════════
    SERVICES — BUSINESS VERTICALS
-   Equal-height cards: 3 + 2 (second row centred)
+   Six equal-height cards: 3 per row, 2 on tablet, 1 on phones
    ═════════════════════════════════════════════════════════ */
 /* Rows are spaced by card margins, not row-gap: a row-gap would also open up
    inside each card's subgrid (around an empty note row). The negative margin
    cancels the last row's card margin. */
 .services__grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     column-gap: var(--space-lg);
     margin-bottom: calc(-1 * var(--space-lg));
 }
 
 .service-card {
-    grid-column: span 2;
     margin-bottom: var(--space-lg);
     background: var(--white);
     border: 1px solid var(--border);
@@ -763,11 +762,6 @@ p { text-wrap: pretty; }
     display: flex;
     flex-direction: column;
     transition: all var(--duration) var(--ease);
-}
-
-/* Centre the second row (cards 4 + 5) */
-.service-card:nth-child(4) {
-    grid-column: 2 / span 2;
 }
 
 /* Header, list, note and photo line up across cards in the same row */
@@ -1306,15 +1300,7 @@ p { text-wrap: pretty; }
 /* ── Services: 3 per row only where every bullet fits on one line ── */
 @media (max-width: 1279px) {
     .services__grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .service-card:nth-child(4) {
-        grid-column: span 2;
-    }
-
-    .service-card:nth-child(5) {
-        grid-column: 2 / span 2;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -1397,10 +1383,6 @@ p { text-wrap: pretty; }
 
     .services__grid {
         grid-template-columns: 1fr;
-    }
-
-    .service-card:nth-child(n) {
-        grid-column: auto;
     }
 
     /* Text and photo share one 24px inset on small screens */
