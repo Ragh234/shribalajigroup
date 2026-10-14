@@ -881,6 +881,98 @@ p { text-wrap: pretty; }
 
 
 /* ═════════════════════════════════════════════════════════
+   OUR TEAM — collapsed behind a button (native <details>)
+   ═════════════════════════════════════════════════════════ */
+.team-section {
+    border-bottom: 1px solid var(--border);
+}
+
+.team__toggle {
+    list-style: none;
+}
+
+.team__toggle::-webkit-details-marker {
+    display: none;
+}
+
+.team__toggle svg {
+    transition: transform var(--duration) var(--ease);
+}
+
+.team__toggle-close,
+.team[open] .team__toggle-open {
+    display: none;
+}
+
+.team[open] .team__toggle-close {
+    display: inline;
+}
+
+.team[open] .team__toggle svg {
+    transform: rotate(180deg);
+}
+
+.team__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+}
+
+.team-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg) var(--space-md);
+    transition: all var(--duration) var(--ease);
+}
+
+.team-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+    border-color: var(--red-100);
+}
+
+.team-card--lead {
+    background: var(--red-50);
+    border-color: var(--red-100);
+}
+
+.team-card__role {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: var(--space-xs);
+}
+
+.team-card__name {
+    font-size: clamp(1.05rem, 1.3vw, 1.15rem);
+    margin-bottom: 0.3rem;
+}
+
+.team-card__edu {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+    .team__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .team__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ═════════════════════════════════════════════════════════
    WHY US — 4-COLUMN GRID
    ═════════════════════════════════════════════════════════ */
 .why__grid {
