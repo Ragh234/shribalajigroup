@@ -395,7 +395,7 @@ p { text-wrap: pretty; }
     font-size: clamp(1.1rem, 2.5vw, 1.5rem);
     color: var(--gold-400);
     font-weight: 500;
-    margin-bottom: clamp(20px, 3vw, 32px);
+    margin-bottom: clamp(16px, 2.5vw, 24px);
     letter-spacing: 0.04em;
 }
 
