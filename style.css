@@ -361,16 +361,24 @@ p { text-wrap: pretty; }
 }
 
 .hero__badge {
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.2rem;
     font-family: var(--font-body);
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.35em;
+    line-height: 1.6;
     color: var(--gold-400);
     border: 1px solid rgba(212,179,94,0.4);
-    padding: 0.4rem 1.6rem;
-    border-radius: 100px;
+    padding: 0.55rem 1.8rem;
+    border-radius: 28px;
     margin-bottom: clamp(24px, 4vw, 40px);
+}
+
+/* trailing letter-space would pull each line left of centre */
+.hero__badge span {
+    text-indent: 0.35em;
 }
 
 .hero__company-name {
@@ -386,13 +394,6 @@ p { text-wrap: pretty; }
     font-weight: 400;
     font-style: italic;
     opacity: 0.9;
-}
-
-.hero__company-pali {
-    font-size: 0.45em;
-    font-weight: 500;
-    opacity: 0.55;
-    letter-spacing: 0.02em;
 }
 
 .hero__tagline {
@@ -442,6 +443,34 @@ p { text-wrap: pretty; }
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.hero__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: clamp(20px, 3vw, 28px);
+    padding-bottom: 3px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.35);
+    text-shadow: 0 1px 12px rgba(0,0,0,0.35);
+}
+
+.hero__link:hover {
+    color: var(--gold-400);
+    border-bottom-color: var(--gold-400);
+}
+
+.hero__link svg {
+    transition: transform var(--duration) var(--ease);
+}
+
+.hero__link:hover svg {
+    transform: translateY(2px);
 }
 
 
@@ -1073,12 +1102,13 @@ p { text-wrap: pretty; }
    ═════════════════════════════════════════════════════════ */
 .achievements__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     gap: var(--space-lg);
     margin-bottom: var(--space-xl);
 }
 
 .achievement-card {
+    grid-column: span 3;
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: var(--radius-md);
@@ -1094,6 +1124,7 @@ p { text-wrap: pretty; }
 }
 
 .achievement-card--featured {
+    grid-column: span 4;
     background: linear-gradient(145deg, rgba(200,160,68,0.12) 0%, rgba(200,160,68,0.04) 100%);
     border-color: rgba(212,179,94,0.35);
 }
@@ -1319,36 +1350,19 @@ p { text-wrap: pretty; }
     margin-bottom: var(--space-sm);
 }
 
-.contact__card-title--spaced {
-    margin-top: var(--space-md);
+.contact__link + .contact__link {
+    margin-top: 0.7rem;
 }
 
-.contact__person {
-    margin-bottom: 0.65rem;
-}
-
-.contact__person strong {
-    display: block;
-    font-size: 0.92rem;
-    color: var(--white);
-    margin-bottom: 0.1rem;
-}
-
-.contact__person a {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.55);
-    transition: color var(--duration) var(--ease);
-}
-
-.contact__person a:hover {
-    color: var(--gold-400);
+#offices {
+    scroll-margin-top: 32px;
 }
 
 .contact__link {
     display: block;
     font-size: 0.88rem;
     color: rgba(255,255,255,0.6);
-    word-break: break-all;
+    overflow-wrap: anywhere;
     transition: color var(--duration) var(--ease);
 }
 
@@ -1457,6 +1471,16 @@ p { text-wrap: pretty; }
     .achievements__grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .achievement-card,
+    .achievement-card--featured {
+        grid-column: auto;
+    }
+
+    /* three featured cards: the last one spans the row */
+    .achievement-card--featured:nth-child(3) {
+        grid-column: 1 / -1;
+    }
 }
 
 /* ── Laptop (≤1024px) ── */
@@ -1560,6 +1584,10 @@ p { text-wrap: pretty; }
         gap: var(--space-md);
     }
 
+    .achievement-card--featured:nth-child(3) {
+        grid-column: auto;
+    }
+
     .values__grid {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--space-md);
@@ -1613,6 +1641,15 @@ p { text-wrap: pretty; }
 
 /* ── Small Mobile (≤375px) ── */
 @media (max-width: 375px) {
+    .hero__badge {
+        letter-spacing: 0.2em;
+        padding: 0.5rem 1.1rem;
+    }
+
+    .hero__badge span {
+        text-indent: 0.2em;
+    }
+
     .about__strengths {
         grid-template-columns: 1fr;
     }
